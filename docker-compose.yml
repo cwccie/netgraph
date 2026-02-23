@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  netgraph:
+    build: .
+    container_name: netgraph
+    ports:
+      - "5000:5000"
+      - "8080:8080"
+    volumes:
+      - ./sample_data:/app/sample_data:ro
+      - netgraph-data:/app/data
+    environment:
+      - NETGRAPH_HOST=0.0.0.0
+      - NETGRAPH_PORT=5000
+      - PYTHONUNBUFFERED=1
+    command: ["dashboard", "--host", "0.0.0.0", "--port", "5000"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import netgraph; print('ok')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  netgraph-demo:
+    build: .
+    container_name: netgraph-demo
+    command: ["demo"]
+    profiles:
+      - demo
+
+volumes:
+  netgraph-data:

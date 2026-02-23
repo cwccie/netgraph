@@ -1,0 +1,93 @@
+{
+  "lldp_neighbors": [
+    {
+      "local_device": "core-sw1",
+      "local_port": "Te1/0/1",
+      "remote_device": "core-sw2",
+      "remote_port": "Te1/0/1",
+      "system_description": "Cisco NX-OS n9000",
+      "capabilities": ["Router", "Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "core-sw1",
+      "local_port": "Gi1/0/1",
+      "remote_device": "dist-sw1",
+      "remote_port": "Te1/0/1",
+      "capabilities": ["Router", "Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "core-sw1",
+      "local_port": "Gi1/0/2",
+      "remote_device": "dist-sw2",
+      "remote_port": "Te1/0/1",
+      "capabilities": ["Router", "Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "core-sw2",
+      "local_port": "Gi1/0/1",
+      "remote_device": "dist-sw1",
+      "remote_port": "Te1/0/2",
+      "capabilities": ["Router", "Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "core-sw2",
+      "local_port": "Gi1/0/2",
+      "remote_device": "dist-sw2",
+      "remote_port": "Te1/0/2",
+      "capabilities": ["Router", "Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "dist-sw1",
+      "local_port": "Gi1/0/1",
+      "remote_device": "access-sw1",
+      "remote_port": "Gi0/1",
+      "capabilities": ["Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "dist-sw1",
+      "local_port": "Gi1/0/2",
+      "remote_device": "access-sw2",
+      "remote_port": "Gi0/1",
+      "capabilities": ["Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "dist-sw2",
+      "local_port": "Gi1/0/1",
+      "remote_device": "access-sw3",
+      "remote_port": "Gi0/1",
+      "capabilities": ["Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "dist-sw2",
+      "local_port": "Gi1/0/2",
+      "remote_device": "access-sw4",
+      "remote_port": "Gi0/1",
+      "capabilities": ["Bridge"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "core-sw1",
+      "local_port": "Gi1/0/3",
+      "remote_device": "wan-rtr1",
+      "remote_port": "Gi0/0/0",
+      "capabilities": ["Router"],
+      "protocol": "lldp"
+    },
+    {
+      "local_device": "core-sw1",
+      "local_port": "Gi1/0/4",
+      "remote_device": "fw1",
+      "remote_port": "Gi1/1",
+      "capabilities": ["Router"],
+      "protocol": "lldp"
+    }
+  ]
+}

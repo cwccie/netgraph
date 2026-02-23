@@ -1,0 +1,1 @@
+"""NetGraph ingest subpackage."""

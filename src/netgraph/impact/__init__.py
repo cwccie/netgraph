@@ -1,0 +1,1 @@
+"""NetGraph impact subpackage."""

@@ -1,0 +1,1 @@
+"""NetGraph predict subpackage."""

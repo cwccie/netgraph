@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetGraph — Network Topology Intelligence</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0f0f23; color: #e0e0e0; }
+        .navbar {
+            background: #1a1a3e; padding: 15px 30px; display: flex;
+            align-items: center; justify-content: space-between;
+            border-bottom: 2px solid #e94560;
+        }
+        .navbar h1 { color: #e94560; font-size: 24px; }
+        .navbar nav a {
+            color: #e0e0e0; text-decoration: none; margin-left: 20px;
+            padding: 8px 16px; border-radius: 4px; transition: background 0.2s;
+        }
+        .navbar nav a:hover { background: #e94560; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .hero {
+            text-align: center; padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a3e, #0f3460);
+            border-radius: 12px; margin-bottom: 40px;
+        }
+        .hero h2 { font-size: 36px; color: #e94560; margin-bottom: 15px; }
+        .hero p { font-size: 18px; color: #a0a0c0; max-width: 700px; margin: 0 auto; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card {
+            background: #1a1a3e; border-radius: 8px; padding: 25px;
+            border: 1px solid #2a2a5e; transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); border-color: #e94560; }
+        .card h3 { color: #e94560; margin-bottom: 10px; font-size: 20px; }
+        .card p { color: #a0a0c0; line-height: 1.6; }
+        .card a { display: inline-block; margin-top: 15px; color: #e94560; text-decoration: none; }
+        .status-bar {
+            background: #1a1a3e; border-radius: 8px; padding: 20px;
+            margin-top: 40px; display: flex; justify-content: space-around;
+            border: 1px solid #2a2a5e;
+        }
+        .status-item { text-align: center; }
+        .status-item .value { font-size: 28px; color: #e94560; font-weight: bold; }
+        .status-item .label { font-size: 13px; color: #a0a0c0; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>NetGraph</h1>
+        <nav>
+            <a href="/">Dashboard</a>
+            <a href="/topology">Topology</a>
+            <a href="/anomaly">Anomalies</a>
+            <a href="/predict">Predictions</a>
+            <a href="/impact">Impact</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Network Topology Intelligence</h2>
+            <p>GNN-powered anomaly detection, failure prediction, and impact analysis for your network infrastructure.</p>
+        </div>
+
+        <div class="status-bar" id="status-bar">
+            <div class="status-item">
+                <div class="value" id="node-count">--</div>
+                <div class="label">Nodes</div>
+            </div>
+            <div class="status-item">
+                <div class="value" id="edge-count">--</div>
+                <div class="label">Edges</div>
+            </div>
+            <div class="status-item">
+                <div class="value" id="health-status">--</div>
+                <div class="label">Health</div>
+            </div>
+            <div class="status-item">
+                <div class="value" id="anomaly-count">--</div>
+                <div class="label">Anomalies</div>
+            </div>
+        </div>
+
+        <div class="cards" style="margin-top: 40px;">
+            <div class="card">
+                <h3>Topology View</h3>
+                <p>Interactive force-directed graph visualization of your network topology with zoom, drag, and node inspection.</p>
+                <a href="/topology">View Topology &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Anomaly Detection</h3>
+                <p>GNN-based anomaly detection identifies structural, behavioral, and temporal anomalies across your network.</p>
+                <a href="/anomaly">View Anomalies &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Failure Prediction</h3>
+                <p>Predict link failures, node overloads, and capacity exhaustion before they impact service.</p>
+                <a href="/predict">View Predictions &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Impact Analysis</h3>
+                <p>Simulate failures and calculate blast radius. Know what breaks before it happens.</p>
+                <a href="/impact">Analyze Impact &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        fetch('/api/v1/health')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('node-count').textContent = data.nodes || 0;
+                document.getElementById('edge-count').textContent = data.edges || 0;
+                document.getElementById('health-status').textContent = data.status === 'ok' ? 'OK' : 'DOWN';
+            })
+            .catch(() => {
+                document.getElementById('health-status').textContent = 'N/A';
+            });
+    </script>
+</body>
+</html>
