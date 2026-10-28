@@ -254,7 +254,7 @@ docker compose up -d netgraph
 
 **Corey A. Wade**
 - CCIE #14124 (25 years network engineering)
-- PhD Candidate, AI + Security
+- PhD, AI + Security
 - GitHub: [@cwccie](https://github.com/cwccie)
 
 ## License
